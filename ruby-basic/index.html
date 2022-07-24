@@ -35,6 +35,10 @@
 <p>下の写真のようになっていれば OK です。</p>
 <p class="image-container"><img alt="Cloud9が表示されているか" src="img/aac3acc0edb6c8d0.png"></p>
 <h2 is-upgraded>コメント</h2>
+<p>このCodelabを見ていくと、このようなコードがあります。</p>
+<pre><code language="language-ruby" class="language-ruby"># これは、コメントです。メモなど好きなことを書くことができます。
+</code></pre>
+<p>コメントは人間がわかりやすいように複雑な処理や一見わかりにくい処理に対して書くメモ書きです。 <code>#</code> シャープを書くことで右側はすべてコメントになります。</p>
 
 
       </google-codelab-step>
@@ -80,59 +84,118 @@ puts hoge
 <pre><code language="language-ruby" class="language-ruby">instructor = &#34;kaikai&#34;
 puts instructor
 </code></pre>
-<p>下のように出力されるか確認してみよう</p>
+<p>下のように出力されるか確認してみましょう。</p>
 <pre><code language="language-sh" class="language-sh">kaikai
 </code></pre>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="型を知る" duration="0">
-        
-
-      </google-codelab-step>
-    
       <google-codelab-step label="型: 文字列を知る" duration="0">
-        <p>シングルウォートまたはダブルクォートで定義できる。</p>
-<pre><code language="language-ruby" class="language-ruby">instructor = &#39;kaikai&#39;
-instructor = &#34;kaikai&#34;
-</code></pre>
-<p>演算子で文字列同士の連結ができる</p>
+        <p>ここでは、文字列について学んでいきます。</p>
+<p>Ruby の文字列では、<code>""</code>（ダブルクォート）と<code>''</code>（シングルウォート）のどちらでも文字列を宣言することができ、<code>+</code>演算子で文字列を結合することができます。</p>
 <pre><code language="language-ruby" class="language-ruby">instructor = &#39;kaikai&#39;
 puts &#39;hello &#39; + instructor + &#39;!&#39;
-# -&gt; hello kaikai!
 </code></pre>
-<p>ダブルクォートでは、式が展開できる</p>
+<pre><code language="language-sh" class="language-sh">hello kaikai!
+</code></pre>
+<p><code>""</code>（ダブルクォート）では、文字列の内部で式展開を行うことができます。</p>
 <pre><code language="language-ruby" class="language-ruby">instructor = &#39;kaikai&#39;
 puts &#34;hello #{instructor}!&#34;
-# -&gt; hello kaikai!
+</code></pre>
+<pre><code language="language-sh" class="language-sh">hello kaikai!
 </code></pre>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="型: 数値を知る" duration="0">
-        <p>整数</p>
-<pre><code language="language-ruby" class="language-ruby">number = 10
+        <p>ここでは、数値について学んでいきます。</p>
+<p>Ruby では、数値を数のみを扱える<code>整数(integer)</code>か小数点も扱える<code>浮動小数点数(Float)</code>のどちらかで数値を扱っていきます。</p>
+<h2 is-upgraded>整数(integer)</h2>
+<p>正の整数・負の整数・ゼロを表すことができます。</p>
+<pre><code language="language-ruby" class="language-ruby">number1 = 10 # 正の整数
+number2 = -10 # 負の整数
+number3 = 0 # ゼロ
+
+p number1
+p number2
+p number3
 </code></pre>
-<p>小数</p>
-<pre><code language="language-ruby" class="language-ruby">number = 10.0
+<pre><code language="language-sh" class="language-sh">10
+-10
+0
 </code></pre>
-<p>演算を行う場合、一方が小数だと自動で小数型に型変換が行われ、演算が行われる。</p>
-<pre><code language="language-ruby" class="language-ruby">puts 10 + 10.1
-puts 10 / 1.0
+<h2 is-upgraded>浮動小数点数(Float)</h2>
+<p>正の浮動小数点数・負の浮動小数点数・ゼロを表すことができます。</p>
+<pre><code language="language-ruby" class="language-ruby">number1 = 12.3 # 正の浮動小数点数
+number2 = -12.3 # 負の浮動小数点数
+number3 = 0.0 # ゼロ
+
+p number1
+p number2
+p number3
+</code></pre>
+<pre><code language="language-sh" class="language-sh">12.3
+-12.3
+0.0
+</code></pre>
+<h2 is-upgraded>演算</h2>
+<p>数値同士では、<code>+</code>を用いて演算を行うことができます。</p>
+<pre><code language="language-ruby" class="language-ruby">puts 10 + 20
+</code></pre>
+<pre><code language="language-sh" class="language-sh">30
+</code></pre>
+<p>もし、一方が小数だと自動で浮動小数点数(Float)に型変換が行われ、演算が行われます。</p>
+<pre><code language="language-ruby" class="language-ruby">number = 10 + 10.1
+puts number
+puts number.integer?
 </code></pre>
 <pre><code language="language-sh" class="language-sh">20.1
-10.0
+false
 </code></pre>
-<h2 is-upgraded>型: 配列を知る</h2>
+<p>※<code>integer?</code>は、数値が整数(integer)かを調べるメソッドで、値が浮動小数点数ならば<code>false</code>と返します。</p>
+<h2 is-upgraded>便利なメソッド</h2>
+<p>Ruby では、数値用に便利なメソッドが用意されています。ここでは、一例を紹介しますが、他にもあるので自分で調べてみましょう。</p>
+<pre><code language="language-ruby" class="language-ruby"># 小数点以下を四捨五入
+puts 3.14.round
+# -&gt; 3
+puts 3.34.round
+# -&gt; 4
+
+# 小数点以下を切り上げ
+puts 3.14.ceil
+# -&gt; 4
+puts -3.14.ceil
+# -3
+
+# 小数点以下を切り捨て
+puts 3.14.floor
+# -&gt; 3
+puts -3.14.floor
+# -&gt; -4
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="型: 配列を知る" duration="0">
+        <p>ここでは、配列について学んでいきます。</p>
+<p>まず、Ruby では以下のように宣言を行います。</p>
+<pre><code language="language-ruby" class="language-ruby">animals = [&#34;dog&#34;, &#34;cat&#34;, &#34;mouse&#34;]
+</code></pre>
+<p>上の配列では、3 つの要素をもっています。「dog」「cat」「mouse」の 3 つの文字列オブジェクトを管理しています。 複数の要素から 1 つを特定できるように先頭から順番に番号が割り当てられています。この番号のことを<code>インデックス</code>と呼んでいます。先頭から「0」「1」「2」と<code>0から順</code>に割り当てられています。</p>
+<p>特定の要素を取り出すには、以下の書き方を使用します。</p>
+<pre><code language="language-ruby" class="language-ruby">配列オブジェクト[インデックス]
+</code></pre>
+<p>例えば、「cat」を取り出したい場合は以下のように書くことができます。</p>
 <pre><code language="language-ruby" class="language-ruby">animals = [&#34;dog&#34;, &#34;cat&#34;, &#34;mouse&#34;]
 puts animals[1]
 </code></pre>
 <pre><code language="language-sh" class="language-sh">cat
 </code></pre>
-<h3 is-upgraded>要素の追加</h3>
-<p><code>cat</code>が出力されたか確認してみよう</p>
+<h2 is-upgraded>要素の追加</h2>
+<p>要素の追加は、<code>push</code>もしくは<code><<</code>を使用して実行することができます。</p>
 <pre><code language="language-ruby" class="language-ruby">animals = [&#34;dog&#34;, &#34;cat&#34;, &#34;mouse&#34;]
 animals.push(&#34;rabbit&#34;)
 puts animals
@@ -148,51 +211,77 @@ puts animals
       </google-codelab-step>
     
       <google-codelab-step label="型: ハッシュを知る" duration="0">
-        <p>配列の添付部分をシンボルや文字列で任意に指定できる</p>
+        <p>ここでは、ハッシュについて学んでいきます。</p>
+<p>ハッシュは、任意の種類のオブジェクト（キー）から任意の種類のオブジェクト（値）への関連付けを行うことができます。</p>
+<p>ハッシュは以下の方法で書くことができます。</p>
+<pre><code language="language-ruby" class="language-ruby">{ キー =&gt; 値 }
+{ キー: 値 }
+{ :キー =&gt; 値 }
+{ &#34;キー&#34;: 値 }
+{ :&#34;キー&#34; =&gt; 値 }
+</code></pre>
+<p>例えば、green というキーに「緑」という値・red というキーに「赤」という値を関連づけを行う場合、以下のように書くことができます。</p>
+<pre><code language="language-ruby" class="language-ruby">{ green: &#34;緑&#34;, red: &#34;赤&#34; }
+</code></pre>
+<h2 is-upgraded>値の取り出し</h2>
+<p><code>ハッシュ名[:キー]</code>で取り出すことができます。</p>
 <pre><code language="language-ruby" class="language-ruby">colors = { green: &#34;緑&#34;, red: &#34;赤&#34; }
 puts colors[:green]
 </code></pre>
 <pre><code language="language-sh" class="language-sh">緑
 </code></pre>
-<p>存在しないものを送ると nil が帰ってくる</p>
+<p>また、存在しないキーを指定すると nil が帰ってきます。</p>
 <pre><code language="language-ruby" class="language-ruby">colors = { green: &#34;緑&#34;, red: &#34;赤&#34;}
 puts colors[:blue]
 </code></pre>
 <pre><code language="language-sh" class="language-sh">nil
 </code></pre>
-<p>追加と削除</p>
+<h2 is-upgraded>追加</h2>
+<p>追加は、以下のような書くことができます。</p>
+<pre><code language="language-ruby" class="language-ruby">ハッシュ名[:キー] = 値
+</code></pre>
+<p>以下の例では、青を追加しています。</p>
 <pre><code language="language-ruby" class="language-ruby">colors = { green: &#34;緑&#34;, red: &#34;赤&#34;}
 
 colors[:blue] = &#34;青&#34;
 puts colors
+</code></pre>
+<pre><code language="language-sh" class="language-sh">{ green: &#34;緑&#34;, red: &#34;赤&#34;, blue: &#34;青&#34; }
+</code></pre>
+<h2 is-upgraded>削除</h2>
+<p>削除は、以下のような書くことができます。</p>
+<pre><code language="language-ruby" class="language-ruby">ハッシュ名.delete(:キー)
+</code></pre>
+<p>以下の例では、赤を削除しています。</p>
+<pre><code language="language-ruby" class="language-ruby">colors = { green: &#34;緑&#34;, red: &#34;赤&#34;}
 
 colors.delete(:red)
 puts colors
 </code></pre>
-<pre><code language="language-sh" class="language-sh">{ green: &#34;緑&#34;, red: &#34;赤&#34;, blue: &#34;青&#34; }
-{ green: &#34;緑&#34;, blue: &#34;青&#34; }
+<pre><code language="language-sh" class="language-sh">{ green: &#34;緑&#34;, blue: &#34;青&#34; }
 </code></pre>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="型変換を知る" duration="0">
-        <pre><code language="language-ruby" class="language-ruby">puts &#34;3&#34; + &#34;4&#34;
-puts 3 + 4
+        <p>ここでは、型変換について学んでいきます。</p>
+<p>まずは、<code>sample.rb</code>に以下のコードを入力してみましょう。</p>
+<pre><code language="language-ruby" class="language-ruby">number = 10
+text = &#34;Hello&#34;
+
+puts number + text # TypeError
 </code></pre>
-<pre><code language="language-sh" class="language-sh">34
-7
+<p>このコードでは、Int 型である<code>number</code>と<code>text</code>という String 型の情報を足そうとしているため TypeError になります。 しかし、Ruby では、<code>.to_s</code>というメソッドを使用してあげることで、Int 型の変数を String 型に変換することができるので、TypeError を回避することができます。</p>
+<pre><code language="language-ruby" class="language-ruby">number = 10
+text = &#34;Hello&#34;
+
+puts number.to_s + text # TypeErrorを回避
 </code></pre>
-<p>型の違うオブジェクトの演算は TypeError になるので、型変換が必要</p>
-<pre><code language="language-ruby" class="language-ruby">puts &#34;3&#34; + 4
+<pre><code language="language-sh" class="language-sh">10Hello
 </code></pre>
-<pre><code language="language-sh" class="language-sh">TypeError: no implicit conversion of Integer into String
-</code></pre>
-<p>型変換を行うことで演算が可能になる</p>
-<pre><code language="language-ruby" class="language-ruby">puts &#34;3&#34;.to_i + 4
-</code></pre>
-<pre><code language="language-sh" class="language-sh">7
-</code></pre>
+<h2 is-upgraded>型変換のメソッド</h2>
+<p>ここでは、一例を紹介しますが、他にもあるので自分で調べてみましょう。</p>
 <pre><code language="language-ruby" class="language-ruby"># 文字列から整数に型変換（数値に変換できない場合、0となる）
 &#34;string&#34;.to_i
 
@@ -205,25 +294,42 @@ puts 3 + 4
 # 数値から文字列に型変換
 10.to_s
 </code></pre>
+<h2 is-upgraded>チャレンジ</h2>
+<p>それでは、以下のコードを実際して TypeError を発生してあげましょう。</p>
+<pre><code language="language-ruby" class="language-ruby">number1 = 10
+number2 = 3.14
+text1 = &#34;20&#34;
+text2 = &#34;Hello World&#34;
+
+puts number1 + text1
+puts number1 + text2
+puts number2 + text1
+</code></pre>
+<p>続いて、以下の出力になるように自分でプログラムを変えてみましょう。</p>
+<pre><code language="language-sh" class="language-sh">30
+10Hello World
+23.14
+</code></pre>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="ループを知る" duration="0">
-        <p>while を使う</p>
-<pre><code language="language-ruby" class="language-ruby">x = 4
-
-while x &gt;= 1
-  puts x
-  x = x - 1
+      <google-codelab-step label="繰り返し処理を知る" duration="0">
+        <p>ここでは、繰り返し処理について学んでいきます。</p>
+<h2 is-upgraded>for ループ</h2>
+<p>Ruby における For ループは、以下のフォーマットで使用します。</p>
+<pre><code language="language-ruby" class="language-ruby">for 変数 in オブジェクト do
+  実行する処理1
+  実行する処理2
 end
 </code></pre>
-<pre><code language="language-sh" class="language-sh">4
-3
-2
-1
-</code></pre>
-<p>for を使う</p>
+<p>オブジェクトには、配列やレンジなどを指定することができます。 レンジとは、数値や文字列の範囲を示すことができるものです。</p>
+<ul>
+<li><code>1..5</code> 1 以上 5 以下</li>
+<li><code>1...5</code> 1 以上 5 未満</li>
+</ul>
+<p>という形で使用することができます。</p>
+<p>例えば、1 から 4 までの数字を出力するプログラムを以下のように書くことができます。</p>
 <pre><code language="language-ruby" class="language-ruby">for i in 1..4 do
   puts i
 end
@@ -233,6 +339,14 @@ end
 3
 4
 </code></pre>
+<h2 is-upgraded>each ループ</h2>
+<p>Ruby における each ループは、以下のフォーマットで使用します。</p>
+<pre><code language="language-ruby" class="language-ruby">オブジェクト.each do |変数|
+  実行する処理1
+  実行する処理2
+end
+</code></pre>
+<p>例えば、配列の中身を取り出すプログラムでは以下のようになります。</p>
 <pre><code language="language-ruby" class="language-ruby">animals = [&#34;dog&#34;, &#34;cat&#34;, &#34;mouse&#34;]
 
 animals.each do |animal|
@@ -243,12 +357,47 @@ end
 cat
 mouse
 </code></pre>
+<h2 is-upgraded>while ループ</h2>
+<p>Ruby における while ループは、以下のフォーマットで使用します。</p>
+<pre><code language="language-ruby" class="language-ruby">while 条件式 do
+  実行する処理1
+  実行する処理2
+end
+</code></pre>
+<p>例えば、1 から 4 までの数字を出力するプログラムを以下のように書くことができます。</p>
+<pre><code language="language-ruby" class="language-ruby">x = 1
+
+while x &lt;= 4 do
+  puts x
+  x = x + 1
+end
+</code></pre>
+<pre><code language="language-sh" class="language-sh">1
+2
+3
+4
+</code></pre>
+<h2 is-upgraded>チャレンジ</h2>
+<p>for・each・while のそれぞれを使って、配列の中身を順番に取り出すプログラムを書いてみましょう！</p>
+<pre><code language="language-ruby" class="language-ruby"># 配列のサンプル
+animals = [&#34;dog&#34;, &#34;cat&#34;, &#34;mouse&#34;]
+</code></pre>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="条件分岐を知る" duration="0">
-        <pre><code language="language-ruby" class="language-ruby">x = 4
+        <p>ここでは、条件分岐について学んでいきます。</p>
+<h2 is-upgraded>if を用いた条件式</h2>
+<p>Ruby では、<code>if</code>を以下のように記述します。</p>
+<pre><code language="language-ruby" class="language-ruby">if 条件式
+  条件式がtrueの時の処理
+else
+  条件式がfalseの時の処理
+end
+</code></pre>
+<p>また if は、連続して使用することができるので、以下のコードを実行すると</p>
+<pre><code language="language-ruby" class="language-ruby">x = 4
 
 if x == 0
   puts &#34;zero&#34;
@@ -258,8 +407,18 @@ else
   puts &#34;odd&#34;
 end
 </code></pre>
+<p>このようになります。</p>
 <pre><code language="language-sh" class="language-sh">even
 </code></pre>
+<h2 is-upgraded>unless を用いた条件式</h2>
+<p>Ruby では、<code>unless</code>を以下のように記述します。</p>
+<pre><code language="language-ruby" class="language-ruby">unless 条件式
+  条件式が偽の時に実行する処理
+else
+  条件式が真の時に実行する処理
+end
+</code></pre>
+<p><code>elsif</code>は、unless 文にはありません。そのため、elsif を使用したい場合は<code>if</code>文を使用しましょう。</p>
 <pre><code language="language-ruby" class="language-ruby">x = 4
 
 unless x == 0
@@ -267,103 +426,148 @@ unless x == 0
 else
   puts &#34;zero&#34;
 end
-
-```sh
-non zero
+</code></pre>
+<pre><code language="language-sh" class="language-sh">non zero
 </code></pre>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="クラスとインスタンスを知る" duration="0">
-        <ul>
-<li>クラス 変数とメソッドが入る設計図</li>
-<li>インスタンス その実体</li>
-</ul>
-<p>講師クラスの場合</p>
-<p>class instructor 変数 name, course メソッド teach, answer</p>
-<p>instance かいかい 変数 name -&gt; かいかい course -&gt; Web サービス メソッド teach, answer</p>
-<p>instance ちゃんりか 変数 name -&gt; ちゃんりか course -&gt; Web サービス メソッド teach, answer</p>
+        <p>ここでは、クラスとインスタンスについて学んでいきます。</p>
+<p>クラスは、<code>変数とメソッドが入る設計図</code>のようなものです。インスタンスは、クラスを元に作成された<code>実体</code>です。</p>
+<p>例えば、<code>コース</code>というクラスを作成した場合、<code>Webサービスプログラミングコース</code>や<code>Webデザインコース</code>というインスタンスを作成することができます。</p>
+<h2 is-upgraded>クラスの定義</h2>
+<p>クラスの内部には、<code>変数</code>と<code>メソッド</code>を定義することができます。</p>
+<p>例えば、コースというクラスの場合、以下のように設計することができます。</p>
+<pre><code language="language-markdown" class="language-markdown"># Class Course
 
+変数
 
-      </google-codelab-step>
-    
-      <google-codelab-step label="クラスとインスタンス: 変数を使う" duration="0">
-        <p>変数を使う</p>
-<pre><code language="language-ruby" class="language-ruby">class Instructor
-  def initialize(name, course)
+- name(コース名)
+- tool（使用ツール）
+
+メソッド
+
+- application（コースへの申し込み）
+- teach（コースを教えることができる）
+</code></pre>
+<p>これを定義するには、Ruby では以下のように記述します。</p>
+<pre><code language="language-ruby" class="language-ruby">class Course
+  def initialize(name, tool)
     @name = name
-    @course = course
+    @tool = tool
+  end
+
+  def application(student)
+    # コースへの申し込みの処理
+  end
+
+  def teach(mentor)
+    # 教えることができる人の処理
   end
 end
 </code></pre>
-
-
-      </google-codelab-step>
-    
-      <google-codelab-step label="クラスとインスタンス: インスタンスを使う" duration="0">
-        <pre><code language="language-ruby" class="language-ruby">kaikai = Instructor.new(&#34;かいかい&#34;, &#34;Webサービス&#34;)
-puts kaikai.name
+<h2 is-upgraded>インスタンスの生成</h2>
+<p>インスタンスを生成するときは、<code>クラス名.new()</code>で<code>initializeメソッド</code>を呼び出します。この時に、引数に定義した name と tool をインスタンスに定義することができます。</p>
+<p>例えば、name に<code>Webサービスプログラミングコース</code>・tool に<code>Cloud9</code>を定義したい時は以下のように記述します。</p>
+<pre><code language="language-ruby" class="language-ruby">webs = Course.new(&#34;Webサービスプログラミングコース&#34;, &#34;Cloud9&#34;)
 </code></pre>
-<pre><code language="language-sh" class="language-sh">かいかい
+<h2 is-upgraded>変数を使う</h2>
+<p>インスタンスに定義された変数は、<code>インスタンス名.変数</code>で取り出すことができます。</p>
+<p>例えば、webs というインスタンスの name を取り出したい場合は、以下のように記述します。</p>
+<pre><code language="language-ruby" class="language-ruby">puts webs.name
 </code></pre>
-<p>ちゃんりかの場合も同様にやってみましょう！</p>
-<p>メソッド</p>
-<pre><code language="language-ruby" class="language-ruby">class Instructor
-  ..
-  def answer(student)
-    puts &#34;#{student}の質問に答える&#34;
+<pre><code language="language-sh" class="language-sh">Webサービスプログラミングコース
+</code></pre>
+<h2 is-upgraded>メソッドを使う</h2>
+<p>インスタンスに定義されたメソッドは、変数と同様に<code>インスタンス.メソッド名(引数)</code>で実行することができます。</p>
+<p>例えば、application の中身も定義して実行してみましょう。</p>
+<pre><code language="language-ruby" class="language-ruby">class Course
+  略
+  def application(student)
+    puts &#34;#{student}は#{@name}に申し込みました&#34;
   end
+  略
 end
 
-kaikai = Instructor.new(&#34;かいかい&#34;, &#34;Webサービス&#34;)
-kaikai.answer(&#34;がっしー&#34;)
+webs = Course.new(&#34;Webサービスプログラミングコース&#34;, &#34;Cloud9&#34;)
+puts webs.application(&#34;がっしー&#34;)
 </code></pre>
-<pre><code language="language-sh" class="language-sh">がっしーの質問に答える
+<pre><code language="language-sh" class="language-sh">がっしーはWebサービスプログラミングコースに申し込みました
 </code></pre>
-<p>teach メソッドを作って、<code>Rubyについて教える</code>と<code>Sinatraについて教える</code>を返すメソッドをつくってみよう！</p>
+<h2 is-upgraded>チャレンジ</h2>
+<p>上と同様に Course クラスを作成し、iPhone コースの例を作ってみましょう。出力が以下になるようにコードを書いてみましょう。</p>
+<pre><code language="language-sh" class="language-sh"># コース名の出力
+iPhoneアプリプログラミングコース
+
+# ツール名の出力
+Xcode
+
+# applicationメソッドの実行結果
+ビルソンはiPhoneアプリプログラミングコースに申し込みました。
+
+# teachメソッドの実行結果
+がっしーはiPhoneアプリプログラミングコースを教えることができます。
+</code></pre>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Ruby の命名規則" duration="0">
-        <table>
+        <p>ここでは、Ruby の命名規則について学んでいきます。</p>
+<table>
 <tr><td colspan="1" rowspan="1"></td><td colspan="1" rowspan="1"><p>命名規則</p>
 </td><td colspan="1" rowspan="1"><p>例</p>
 </td></tr>
 <tr><td colspan="1" rowspan="1"><p>クラス</p>
-</td><td colspan="2" rowspan="1"><p>UpperCamelCase</p>
-</td><td colspan="1" rowspan="1"></td></tr>
+</td><td colspan="1" rowspan="1"><p>UpperCamelCase</p>
+</td><td colspan="1" rowspan="1"><p>WebService</p>
+</td></tr>
 <tr><td colspan="1" rowspan="1"><p>モジュール</p>
-</td><td colspan="2" rowspan="1"><p>UpperCamelCase</p>
-</td><td colspan="1" rowspan="1"></td></tr>
+</td><td colspan="1" rowspan="1"><p>UpperCamelCase</p>
+</td><td colspan="1" rowspan="1"><p>WebService</p>
+</td></tr>
 <tr><td colspan="1" rowspan="1"><p>メソッド</p>
-</td><td colspan="2" rowspan="1"><p>snake_case</p>
-</td><td colspan="1" rowspan="1"></td></tr>
+</td><td colspan="1" rowspan="1"><p>snake_case</p>
+</td><td colspan="1" rowspan="1"><p>web_service</p>
+</td></tr>
 <tr><td colspan="1" rowspan="1"><p>変数</p>
-</td><td colspan="2" rowspan="1"><p>snake_case</p>
-</td><td colspan="1" rowspan="1"></td></tr>
+</td><td colspan="1" rowspan="1"><p>snake_case</p>
+</td><td colspan="1" rowspan="1"><p>web_service</p>
+</td></tr>
 <tr><td colspan="1" rowspan="1"><p>定数</p>
-</td><td colspan="2" rowspan="1"><p>SNAKE_WITH_UPPERCASE</p>
-</td><td colspan="1" rowspan="1"></td></tr>
+</td><td colspan="1" rowspan="1"><p>SNAKE_WITH_UPPERCASE</p>
+</td><td colspan="1" rowspan="1"><p>WEB_SERVICE</p>
+</td></tr>
 </table>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="まとめ" duration="0">
-        <p>Ruby は、究極のオブジェクト指向だ！ Ruby はすべてがオブジェクト</p>
-<p>例えば、文字列は String クラスのインスタンス</p>
-<pre><code language="language-ruby" class="language-ruby">instructor = &#39;chanrika&#39; # Stringクラスのインスタンス
-puts instructor.include?(&#39;a&#39;) # Stringクラスのメソッドが使える -&gt; 戻り値はTrueクラスのインスタンス
-puts instructor.to_i # Stringクラスのメソッドが使える -&gt; 戻り値はIntegerクラスのインスタンス
+      <google-codelab-step label="まとめ: Ruby は、究極のオブジェクト指向だ" duration="0">
+        <p>Ruby は、すべてが<code>オブジェクト</code>です。そのため、Ruby は究極のオブジェクト指向な言語です！</p>
+<p>例えば、String クラスのインスタンスの場合は以下のような仕組みになっています。</p>
+<pre><code language="language-ruby" class="language-ruby"># Stringクラスのインスタンス
+instructor = &#39;chanrika&#39;
+
+# Stringクラスのメソッドが使える -&gt; 戻り値はTrueクラスのインスタンス
+puts instructor.include?(&#39;a&#39;)
+
+# Stringクラスのメソッドが使える -&gt; 戻り値はIntegerクラスのインスタンス
+puts instructor.to_i
 </code></pre>
 <pre><code language="language-sh" class="language-sh">true
 0
 </code></pre>
-<pre><code language="language-ruby" class="language-ruby">animals = [&#34;dog&#34;, &#34;cat&#34;, &#34;mouse&#34;] # Arrayクラスのインスタンス
-animals.each do |animal| # Arrayクラスのメソッドが使える
-  puts animal # 戻り地はStringクラスのインスタンス
+<p>同様に、Array クラスのメソッドは以下のような仕組みになっています。</p>
+<pre><code language="language-ruby" class="language-ruby"># Arrayクラスのインスタンス
+animals = [&#34;dog&#34;, &#34;cat&#34;, &#34;mouse&#34;]
+
+# Arrayクラスのメソッドが使える
+animals.each do |animal|
+  # 戻り値はStringクラスのインスタンス
+  puts animal
 end
 </code></pre>
 <pre><code language="language-sh" class="language-sh">dog

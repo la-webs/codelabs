@@ -24,7 +24,14 @@ Cloud9 で実際にコードを入力して手を動かしながら、進めて�
 
 ### コメント
 
-<!-- TODO: コメントの説明文書く -->
+このCodelabを見ていくと、このようなコードがあります。
+
+```ruby
+# これは、コメントです。メモなど好きなことを書くことができます。
+```
+
+コメントは人間がわかりやすいように複雑な処理や一見わかりにくい処理に対して書くメモ書きです。
+`#` シャープを書くことで右側はすべてコメントになります。
 
 ## Ruby を実行する
 
@@ -98,68 +105,155 @@ instructor = "kaikai"
 puts instructor
 ```
 
-下のように出力されるか確認してみよう
+下のように出力されるか確認してみましょう。
 
 ```sh
 kaikai
 ```
 
-## 型を知る
-
-<!-- TODO: 型の種類について説明 -->
-
 ## 型: 文字列を知る
 
-シングルウォートまたはダブルクォートで定義できる。
+ここでは、文字列について学んでいきます。
 
-```ruby
-instructor = 'kaikai'
-instructor = "kaikai"
-```
-
-演算子で文字列同士の連結ができる
+Ruby の文字列では、`""`（ダブルクォート）と`''`（シングルウォート）のどちらでも文字列を宣言することができ、`+`演算子で文字列を結合することができます。
 
 ```ruby
 instructor = 'kaikai'
 puts 'hello ' + instructor + '!'
-# -> hello kaikai!
 ```
 
-ダブルクォートでは、式が展開できる
+```sh
+hello kaikai!
+```
+
+`""`（ダブルクォート）では、文字列の内部で式展開を行うことができます。
 
 ```ruby
 instructor = 'kaikai'
 puts "hello #{instructor}!"
-# -> hello kaikai!
+```
+
+```sh
+hello kaikai!
 ```
 
 ## 型: 数値を知る
 
-整数
+ここでは、数値について学んでいきます。
+
+Ruby では、数値を数のみを扱える`整数(integer)`か小数点も扱える`浮動小数点数(Float)`のどちらかで数値を扱っていきます。
+
+### 整数(integer)
+
+正の整数・負の整数・ゼロを表すことができます。
 
 ```ruby
-number = 10
+number1 = 10 # 正の整数
+number2 = -10 # 負の整数
+number3 = 0 # ゼロ
+
+p number1
+p number2
+p number3
 ```
 
-小数
-
-```ruby
-number = 10.0
+```sh
+10
+-10
+0
 ```
 
-演算を行う場合、一方が小数だと自動で小数型に型変換が行われ、演算が行われる。
+### 浮動小数点数(Float)
+
+正の浮動小数点数・負の浮動小数点数・ゼロを表すことができます。
 
 ```ruby
-puts 10 + 10.1
-puts 10 / 1.0
+number1 = 12.3 # 正の浮動小数点数
+number2 = -12.3 # 負の浮動小数点数
+number3 = 0.0 # ゼロ
+
+p number1
+p number2
+p number3
+```
+
+```sh
+12.3
+-12.3
+0.0
+```
+
+### 演算
+
+数値同士では、`+`を用いて演算を行うことができます。
+
+```ruby
+puts 10 + 20
+```
+
+```sh
+30
+```
+
+もし、一方が小数だと自動で浮動小数点数(Float)に型変換が行われ、演算が行われます。
+
+```ruby
+number = 10 + 10.1
+puts number
+puts number.integer?
 ```
 
 ```sh
 20.1
-10.0
+false
 ```
 
-### 型: 配列を知る
+※`integer?`は、数値が整数(integer)かを調べるメソッドで、値が浮動小数点数ならば`false`と返します。
+
+### 便利なメソッド
+
+Ruby では、数値用に便利なメソッドが用意されています。ここでは、一例を紹介しますが、他にもあるので自分で調べてみましょう。
+
+```ruby
+# 小数点以下を四捨五入
+puts 3.14.round
+# -> 3
+puts 3.34.round
+# -> 4
+
+# 小数点以下を切り上げ
+puts 3.14.ceil
+# -> 4
+puts -3.14.ceil
+# -3
+
+# 小数点以下を切り捨て
+puts 3.14.floor
+# -> 3
+puts -3.14.floor
+# -> -4
+```
+
+## 型: 配列を知る
+
+ここでは、配列について学んでいきます。
+
+まず、Ruby では以下のように宣言を行います。
+
+```ruby
+animals = ["dog", "cat", "mouse"]
+```
+
+上の配列では、3 つの要素をもっています。「dog」「cat」「mouse」の 3 つの文字列オブジェクトを管理しています。
+複数の要素から 1 つを特定できるように先頭から順番に番号が割り当てられています。この番号のことを`インデックス`と呼んでいます。先頭から「0」「1」「2」と`0から順`に割り当てられています。
+
+特定の要素を取り出すには、以下の書き方を使用します。
+
+```ruby
+配列オブジェクト[インデックス]
+```
+
+例えば、「cat」を取り出したい場合は以下のように書くことができます。
 
 ```ruby
 animals = ["dog", "cat", "mouse"]
@@ -170,9 +264,9 @@ puts animals[1]
 cat
 ```
 
-#### 要素の追加
+### 要素の追加
 
-`cat`が出力されたか確認してみよう
+要素の追加は、`push`もしくは`<<`を使用して実行することができます。
 
 ```ruby
 animals = ["dog", "cat", "mouse"]
@@ -192,7 +286,29 @@ puts animals
 
 ## 型: ハッシュを知る
 
-配列の添付部分をシンボルや文字列で任意に指定できる
+ここでは、ハッシュについて学んでいきます。
+
+ハッシュは、任意の種類のオブジェクト（キー）から任意の種類のオブジェクト（値）への関連付けを行うことができます。
+
+ハッシュは以下の方法で書くことができます。
+
+```ruby
+{ キー => 値 }
+{ キー: 値 }
+{ :キー => 値 }
+{ "キー": 値 }
+{ :"キー" => 値 }
+```
+
+例えば、green というキーに「緑」という値・red というキーに「赤」という値を関連づけを行う場合、以下のように書くことができます。
+
+```ruby
+{ green: "緑", red: "赤" }
+```
+
+### 値の取り出し
+
+`ハッシュ名[:キー]`で取り出すことができます。
 
 ```ruby
 colors = { green: "緑", red: "赤" }
@@ -203,7 +319,7 @@ puts colors[:green]
 緑
 ```
 
-存在しないものを送ると nil が帰ってくる
+また、存在しないキーを指定すると nil が帰ってきます。
 
 ```ruby
 colors = { green: "緑", red: "赤"}
@@ -214,54 +330,78 @@ puts colors[:blue]
 nil
 ```
 
-追加と削除
+### 追加
+
+追加は、以下のような書くことができます。
+
+```ruby
+ハッシュ名[:キー] = 値
+```
+
+以下の例では、青を追加しています。
 
 ```ruby
 colors = { green: "緑", red: "赤"}
 
 colors[:blue] = "青"
 puts colors
+```
+
+```sh
+{ green: "緑", red: "赤", blue: "青" }
+```
+
+### 削除
+
+削除は、以下のような書くことができます。
+
+```ruby
+ハッシュ名.delete(:キー)
+```
+
+以下の例では、赤を削除しています。
+
+```ruby
+colors = { green: "緑", red: "赤"}
 
 colors.delete(:red)
 puts colors
 ```
 
 ```sh
-{ green: "緑", red: "赤", blue: "青" }
 { green: "緑", blue: "青" }
 ```
 
 ## 型変換を知る
 
+ここでは、型変換について学んでいきます。
+
+まずは、`sample.rb`に以下のコードを入力してみましょう。
+
 ```ruby
-puts "3" + "4"
-puts 3 + 4
+number = 10
+text = "Hello"
+
+puts number + text # TypeError
+```
+
+このコードでは、Int 型である`number`と`text`という String 型の情報を足そうとしているため TypeError になります。
+しかし、Ruby では、`.to_s`というメソッドを使用してあげることで、Int 型の変数を String 型に変換することができるので、TypeError を回避することができます。
+
+```ruby
+number = 10
+text = "Hello"
+
+puts number.to_s + text # TypeErrorを回避
 ```
 
 ```sh
-34
-7
+10Hello
 ```
 
-型の違うオブジェクトの演算は TypeError になるので、型変換が必要
+### 型変換のメソッド
 
-```ruby
-puts "3" + 4
-```
-
-```sh
-TypeError: no implicit conversion of Integer into String
-```
-
-型変換を行うことで演算が可能になる
-
-```ruby
-puts "3".to_i + 4
-```
-
-```sh
-7
-```
+ここでは、一例を紹介しますが、他にもあるので自分で調べてみましょう。
 
 ```ruby
 # 文字列から整数に型変換（数値に変換できない場合、0となる）
@@ -277,27 +417,53 @@ puts "3".to_i + 4
 10.to_s
 ```
 
-## ループを知る
+### チャレンジ
 
-while を使う
+それでは、以下のコードを実際して TypeError を発生してあげましょう。
 
 ```ruby
-x = 4
+number1 = 10
+number2 = 3.14
+text1 = "20"
+text2 = "Hello World"
 
-while x >= 1
-  puts x
-  x = x - 1
+puts number1 + text1
+puts number1 + text2
+puts number2 + text1
+```
+
+続いて、以下の出力になるように自分でプログラムを変えてみましょう。
+
+```sh
+30
+10Hello World
+23.14
+```
+
+## 繰り返し処理を知る
+
+ここでは、繰り返し処理について学んでいきます。
+
+### for ループ
+
+Ruby における For ループは、以下のフォーマットで使用します。
+
+```ruby
+for 変数 in オブジェクト do
+  実行する処理1
+  実行する処理2
 end
 ```
 
-```sh
-4
-3
-2
-1
-```
+オブジェクトには、配列やレンジなどを指定することができます。
+レンジとは、数値や文字列の範囲を示すことができるものです。
 
-for を使う
+- `1..5` 1 以上 5 以下
+- `1...5` 1 以上 5 未満
+
+という形で使用することができます。
+
+例えば、1 から 4 までの数字を出力するプログラムを以下のように書くことができます。
 
 ```ruby
 for i in 1..4 do
@@ -311,6 +477,19 @@ end
 3
 4
 ```
+
+### each ループ
+
+Ruby における each ループは、以下のフォーマットで使用します。
+
+```ruby
+オブジェクト.each do |変数|
+  実行する処理1
+  実行する処理2
+end
+```
+
+例えば、配列の中身を取り出すプログラムでは以下のようになります。
 
 ```ruby
 animals = ["dog", "cat", "mouse"]
@@ -326,7 +505,61 @@ cat
 mouse
 ```
 
+### while ループ
+
+Ruby における while ループは、以下のフォーマットで使用します。
+
+```ruby
+while 条件式 do
+  実行する処理1
+  実行する処理2
+end
+```
+
+例えば、1 から 4 までの数字を出力するプログラムを以下のように書くことができます。
+
+```ruby
+x = 1
+
+while x <= 4 do
+  puts x
+  x = x + 1
+end
+```
+
+```sh
+1
+2
+3
+4
+```
+
+### チャレンジ
+
+for・each・while のそれぞれを使って、配列の中身を順番に取り出すプログラムを書いてみましょう！
+
+```ruby
+# 配列のサンプル
+animals = ["dog", "cat", "mouse"]
+```
+
 ## 条件分岐を知る
+
+ここでは、条件分岐について学んでいきます。
+
+### if を用いた条件式
+
+Ruby では、`if`を以下のように記述します。
+
+```ruby
+if 条件式
+  条件式がtrueの時の処理
+else
+  条件式がfalseの時の処理
+end
+```
+
+また if は、連続して使用することができるので、以下のコードを実行すると
 
 ```ruby
 x = 4
@@ -340,11 +573,27 @@ else
 end
 ```
 
+このようになります。
+
 ```sh
 even
 ```
 
-````ruby
+### unless を用いた条件式
+
+Ruby では、`unless`を以下のように記述します。
+
+```ruby
+unless 条件式
+  条件式が偽の時に実行する処理
+else
+  条件式が真の時に実行する処理
+end
+```
+
+`elsif`は、unless 文にはありません。そのため、elsif を使用したい場合は`if`文を使用しましょう。
+
+```ruby
 x = 4
 
 unless x == 0
@@ -352,105 +601,151 @@ unless x == 0
 else
   puts "zero"
 end
+```
 
 ```sh
 non zero
-````
+```
 
 ## クラスとインスタンスを知る
 
-- クラス
-  変数とメソッドが入る設計図
-- インスタンス
-  その実体
+ここでは、クラスとインスタンスについて学んでいきます。
 
-講師クラスの場合
+クラスは、`変数とメソッドが入る設計図`のようなものです。インスタンスは、クラスを元に作成された`実体`です。
 
-class instructor
-変数 name, course
-メソッド teach, answer
+例えば、`コース`というクラスを作成した場合、`Webサービスプログラミングコース`や`Webデザインコース`というインスタンスを作成することができます。
 
-instance かいかい
+### クラスの定義
+
+クラスの内部には、`変数`と`メソッド`を定義することができます。
+
+例えば、コースというクラスの場合、以下のように設計することができます。
+
+```markdown
+# Class Course
+
 変数
-name -> かいかい
-course -> Web サービス
+
+- name(コース名)
+- tool（使用ツール）
+
 メソッド
-teach, answer
 
-instance ちゃんりか
-変数
-name -> ちゃんりか
-course -> Web サービス
-メソッド
-teach, answer
+- application（コースへの申し込み）
+- teach（コースを教えることができる）
+```
 
-## クラスとインスタンス: 変数を使う
-
-変数を使う
+これを定義するには、Ruby では以下のように記述します。
 
 ```ruby
-class Instructor
-  def initialize(name, course)
+class Course
+  def initialize(name, tool)
     @name = name
-    @course = course
+    @tool = tool
+  end
+
+  def application(student)
+    # コースへの申し込みの処理
+  end
+
+  def teach(mentor)
+    # 教えることができる人の処理
   end
 end
 ```
 
-## クラスとインスタンス: インスタンスを使う
+### インスタンスの生成
+
+インスタンスを生成するときは、`クラス名.new()`で`initializeメソッド`を呼び出します。この時に、引数に定義した name と tool をインスタンスに定義することができます。
+
+例えば、name に`Webサービスプログラミングコース`・tool に`Cloud9`を定義したい時は以下のように記述します。
 
 ```ruby
-kaikai = Instructor.new("かいかい", "Webサービス")
-puts kaikai.name
+webs = Course.new("Webサービスプログラミングコース", "Cloud9")
+```
+
+### 変数を使う
+
+インスタンスに定義された変数は、`インスタンス名.変数`で取り出すことができます。
+
+例えば、webs というインスタンスの name を取り出したい場合は、以下のように記述します。
+
+```ruby
+puts webs.name
 ```
 
 ```sh
-かいかい
+Webサービスプログラミングコース
 ```
 
-ちゃんりかの場合も同様にやってみましょう！
+### メソッドを使う
 
-メソッド
+インスタンスに定義されたメソッドは、変数と同様に`インスタンス.メソッド名(引数)`で実行することができます。
+
+例えば、application の中身も定義して実行してみましょう。
 
 ```ruby
-class Instructor
-  ..
-  def answer(student)
-    puts "#{student}の質問に答える"
+class Course
+  略
+  def application(student)
+    puts "#{student}は#{@name}に申し込みました"
   end
+  略
 end
 
-kaikai = Instructor.new("かいかい", "Webサービス")
-kaikai.answer("がっしー")
+webs = Course.new("Webサービスプログラミングコース", "Cloud9")
+puts webs.application("がっしー")
 ```
 
 ```sh
-がっしーの質問に答える
+がっしーはWebサービスプログラミングコースに申し込みました
 ```
 
-teach メソッドを作って、`Rubyについて教える`と`Sinatraについて教える`を返すメソッドをつくってみよう！
+### チャレンジ
+
+上と同様に Course クラスを作成し、iPhone コースの例を作ってみましょう。出力が以下になるようにコードを書いてみましょう。
+
+```sh
+# コース名の出力
+iPhoneアプリプログラミングコース
+
+# ツール名の出力
+Xcode
+
+# applicationメソッドの実行結果
+ビルソンはiPhoneアプリプログラミングコースに申し込みました。
+
+# teachメソッドの実行結果
+がっしーはiPhoneアプリプログラミングコースを教えることができます。
+```
 
 ## Ruby の命名規則
 
-|            | 命名規則             | 例  |
-| ---------- | -------------------- | --- |
-| クラス     | UpperCamelCase       |     |
-| モジュール | UpperCamelCase       |     |
-| メソッド   | snake_case           |     |
-| 変数       | snake_case           |     |
-| 定数       | SNAKE_WITH_UPPERCASE |     |
+ここでは、Ruby の命名規則について学んでいきます。
 
-## まとめ
+|            | 命名規則             | 例          |
+| ---------- | -------------------- | ----------- |
+| クラス     | UpperCamelCase       | WebService  |
+| モジュール | UpperCamelCase       | WebService  |
+| メソッド   | snake_case           | web_service |
+| 変数       | snake_case           | web_service |
+| 定数       | SNAKE_WITH_UPPERCASE | WEB_SERVICE |
 
-Ruby は、究極のオブジェクト指向だ！
-Ruby はすべてがオブジェクト
+## まとめ: Ruby は、究極のオブジェクト指向だ
 
-例えば、文字列は String クラスのインスタンス
+Ruby は、すべてが`オブジェクト`です。そのため、Ruby は究極のオブジェクト指向な言語です！
+
+例えば、String クラスのインスタンスの場合は以下のような仕組みになっています。
 
 ```ruby
-instructor = 'chanrika' # Stringクラスのインスタンス
-puts instructor.include?('a') # Stringクラスのメソッドが使える -> 戻り値はTrueクラスのインスタンス
-puts instructor.to_i # Stringクラスのメソッドが使える -> 戻り値はIntegerクラスのインスタンス
+# Stringクラスのインスタンス
+instructor = 'chanrika'
+
+# Stringクラスのメソッドが使える -> 戻り値はTrueクラスのインスタンス
+puts instructor.include?('a')
+
+# Stringクラスのメソッドが使える -> 戻り値はIntegerクラスのインスタンス
+puts instructor.to_i
 ```
 
 ```sh
@@ -458,10 +753,16 @@ true
 0
 ```
 
+同様に、Array クラスのメソッドは以下のような仕組みになっています。
+
 ```ruby
-animals = ["dog", "cat", "mouse"] # Arrayクラスのインスタンス
-animals.each do |animal| # Arrayクラスのメソッドが使える
-  puts animal # 戻り地はStringクラスのインスタンス
+# Arrayクラスのインスタンス
+animals = ["dog", "cat", "mouse"]
+
+# Arrayクラスのメソッドが使える
+animals.each do |animal|
+  # 戻り値はStringクラスのインスタンス
+  puts animal
 end
 ```
 
