@@ -1,0 +1,396 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Ruby 基礎</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="ruby-basic"
+                  title="Ruby 基礎"
+                  environment="web"
+                  feedback-link="">
+    
+      <google-codelab-step label="はじめに" duration="0">
+        <p>このコードラボでは、実際に Cloud9 を使用しながら Ruby について学んでいきます。</p>
+<p>Cloud9 で実際にコードを入力して手を動かしながら、進めていきましょう！</p>
+<h2 is-upgraded>実行環境を整える</h2>
+<p>まずは、Cloud9 を開き、<code>enviroment</code>のフォルダの直下に、<code>sample.rb</code>という名前のファイルを作成しましょう。</p>
+<p>下の写真のようになっていれば OK です。</p>
+<p class="image-container"><img alt="Cloud9が表示されているか" src="img/aac3acc0edb6c8d0.png"></p>
+<h2 is-upgraded>コメント</h2>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Ruby を実行する" duration="0">
+        <p><code>sample.rb</code>に下のコードを書いてみましょう。</p>
+<pre><code language="language-ruby" class="language-ruby">puts &#34;hello world&#34;
+</code></pre>
+<h2 is-upgraded>Ruby ファイルの実行</h2>
+<p>下のコマンドでファイルを実行しましょう。Ruby ファイルは、<code>ruby ファイル名</code>で実行することができます。</p>
+<pre><code language="language-sh" class="language-sh">ruby sample.rb
+</code></pre>
+<p>下のようにコンソールに出力されたら OK です。</p>
+<pre><code language="language-sh" class="language-sh">hello world
+</code></pre>
+<h2 is-upgraded>標準出力</h2>
+<p>標準出力は、コンソールに情報を表示することができます。</p>
+<p>文字列をコンソールに出力したい場合</p>
+<pre><code language="language-ruby" class="language-ruby">puts &#34;hoge&#34;
+</code></pre>
+<pre><code language="language-sh" class="language-sh">hoge
+</code></pre>
+<p>変数の内容をコンソールに出力したい場合</p>
+<pre><code language="language-ruby" class="language-ruby">hoge = &#34;hello&#34;
+puts hoge
+</code></pre>
+<pre><code language="language-sh" class="language-sh">hello
+</code></pre>
+<h2 is-upgraded>チャレンジ</h2>
+<p>文字列の場合・変数を使う場合の 2 つのパターンで実際にコードを書いて出力させましょう</p>
+<pre><code language="language-sh" class="language-sh">Cloud9を使って開発するよ
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="変数を知る" duration="0">
+        <p>次に、変数について詳しく学んでいきましょう。</p>
+<p>まず変数とは、データに名前をつけて区別できるようにする仕組みで、Ruby では以下のように定義します。また、Ruby は動的型付け言語なので、型宣言は不要です。</p>
+<pre><code language="language-ruby" class="language-ruby">キーワード = 初期値
+</code></pre>
+<h2 is-upgraded>変数の定義</h2>
+<pre><code language="language-ruby" class="language-ruby">instructor = &#34;kaikai&#34;
+puts instructor
+</code></pre>
+<p>下のように出力されるか確認してみよう</p>
+<pre><code language="language-sh" class="language-sh">kaikai
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="型を知る" duration="0">
+        
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="型: 文字列を知る" duration="0">
+        <p>シングルウォートまたはダブルクォートで定義できる。</p>
+<pre><code language="language-ruby" class="language-ruby">instructor = &#39;kaikai&#39;
+instructor = &#34;kaikai&#34;
+</code></pre>
+<p>演算子で文字列同士の連結ができる</p>
+<pre><code language="language-ruby" class="language-ruby">instructor = &#39;kaikai&#39;
+puts &#39;hello &#39; + instructor + &#39;!&#39;
+# -&gt; hello kaikai!
+</code></pre>
+<p>ダブルクォートでは、式が展開できる</p>
+<pre><code language="language-ruby" class="language-ruby">instructor = &#39;kaikai&#39;
+puts &#34;hello #{instructor}!&#34;
+# -&gt; hello kaikai!
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="型: 数値を知る" duration="0">
+        <p>整数</p>
+<pre><code language="language-ruby" class="language-ruby">number = 10
+</code></pre>
+<p>小数</p>
+<pre><code language="language-ruby" class="language-ruby">number = 10.0
+</code></pre>
+<p>演算を行う場合、一方が小数だと自動で小数型に型変換が行われ、演算が行われる。</p>
+<pre><code language="language-ruby" class="language-ruby">puts 10 + 10.1
+puts 10 / 1.0
+</code></pre>
+<pre><code language="language-sh" class="language-sh">20.1
+10.0
+</code></pre>
+<h2 is-upgraded>型: 配列を知る</h2>
+<pre><code language="language-ruby" class="language-ruby">animals = [&#34;dog&#34;, &#34;cat&#34;, &#34;mouse&#34;]
+puts animals[1]
+</code></pre>
+<pre><code language="language-sh" class="language-sh">cat
+</code></pre>
+<h3 is-upgraded>要素の追加</h3>
+<p><code>cat</code>が出力されたか確認してみよう</p>
+<pre><code language="language-ruby" class="language-ruby">animals = [&#34;dog&#34;, &#34;cat&#34;, &#34;mouse&#34;]
+animals.push(&#34;rabbit&#34;)
+puts animals
+</code></pre>
+<pre><code language="language-ruby" class="language-ruby">animals = [&#34;dog&#34;, &#34;cat&#34;, &#34;mouse&#34;]
+animals &lt;&lt; &#34;rabbit&#34;
+puts animals
+</code></pre>
+<pre><code language="language-sh" class="language-sh">[&#34;dog&#34;, &#34;cat&#34;, &#34;mouse&#34;, &#34;rabbit&#34;]
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="型: ハッシュを知る" duration="0">
+        <p>配列の添付部分をシンボルや文字列で任意に指定できる</p>
+<pre><code language="language-ruby" class="language-ruby">colors = { green: &#34;緑&#34;, red: &#34;赤&#34; }
+puts colors[:green]
+</code></pre>
+<pre><code language="language-sh" class="language-sh">緑
+</code></pre>
+<p>存在しないものを送ると nil が帰ってくる</p>
+<pre><code language="language-ruby" class="language-ruby">colors = { green: &#34;緑&#34;, red: &#34;赤&#34;}
+puts colors[:blue]
+</code></pre>
+<pre><code language="language-sh" class="language-sh">nil
+</code></pre>
+<p>追加と削除</p>
+<pre><code language="language-ruby" class="language-ruby">colors = { green: &#34;緑&#34;, red: &#34;赤&#34;}
+
+colors[:blue] = &#34;青&#34;
+puts colors
+
+colors.delete(:red)
+puts colors
+</code></pre>
+<pre><code language="language-sh" class="language-sh">{ green: &#34;緑&#34;, red: &#34;赤&#34;, blue: &#34;青&#34; }
+{ green: &#34;緑&#34;, blue: &#34;青&#34; }
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="型変換を知る" duration="0">
+        <pre><code language="language-ruby" class="language-ruby">puts &#34;3&#34; + &#34;4&#34;
+puts 3 + 4
+</code></pre>
+<pre><code language="language-sh" class="language-sh">34
+7
+</code></pre>
+<p>型の違うオブジェクトの演算は TypeError になるので、型変換が必要</p>
+<pre><code language="language-ruby" class="language-ruby">puts &#34;3&#34; + 4
+</code></pre>
+<pre><code language="language-sh" class="language-sh">TypeError: no implicit conversion of Integer into String
+</code></pre>
+<p>型変換を行うことで演算が可能になる</p>
+<pre><code language="language-ruby" class="language-ruby">puts &#34;3&#34;.to_i + 4
+</code></pre>
+<pre><code language="language-sh" class="language-sh">7
+</code></pre>
+<pre><code language="language-ruby" class="language-ruby"># 文字列から整数に型変換（数値に変換できない場合、0となる）
+&#34;string&#34;.to_i
+
+# 文字列から小数に型変換（数値に変換できない場合、0となる）
+&#34;string&#34;.to_f
+
+# 整数から小数に型変換
+10.to_f
+
+# 数値から文字列に型変換
+10.to_s
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="ループを知る" duration="0">
+        <p>while を使う</p>
+<pre><code language="language-ruby" class="language-ruby">x = 4
+
+while x &gt;= 1
+  puts x
+  x = x - 1
+end
+</code></pre>
+<pre><code language="language-sh" class="language-sh">4
+3
+2
+1
+</code></pre>
+<p>for を使う</p>
+<pre><code language="language-ruby" class="language-ruby">for i in 1..4 do
+  puts i
+end
+</code></pre>
+<pre><code language="language-sh" class="language-sh">1
+2
+3
+4
+</code></pre>
+<pre><code language="language-ruby" class="language-ruby">animals = [&#34;dog&#34;, &#34;cat&#34;, &#34;mouse&#34;]
+
+animals.each do |animal|
+  puts animal
+end
+</code></pre>
+<pre><code language="language-sh" class="language-sh">dog
+cat
+mouse
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="条件分岐を知る" duration="0">
+        <pre><code language="language-ruby" class="language-ruby">x = 4
+
+if x == 0
+  puts &#34;zero&#34;
+elsif x % 2 == 0
+  puts &#34;even&#34;
+else
+  puts &#34;odd&#34;
+end
+</code></pre>
+<pre><code language="language-sh" class="language-sh">even
+</code></pre>
+<pre><code language="language-ruby" class="language-ruby">x = 4
+
+unless x == 0
+  puts &#34;non zero&#34;
+else
+  puts &#34;zero&#34;
+end
+
+```sh
+non zero
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="クラスとインスタンスを知る" duration="0">
+        <ul>
+<li>クラス 変数とメソッドが入る設計図</li>
+<li>インスタンス その実体</li>
+</ul>
+<p>講師クラスの場合</p>
+<p>class instructor 変数 name, course メソッド teach, answer</p>
+<p>instance かいかい 変数 name -&gt; かいかい course -&gt; Web サービス メソッド teach, answer</p>
+<p>instance ちゃんりか 変数 name -&gt; ちゃんりか course -&gt; Web サービス メソッド teach, answer</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="クラスとインスタンス: 変数を使う" duration="0">
+        <p>変数を使う</p>
+<pre><code language="language-ruby" class="language-ruby">class Instructor
+  def initialize(name, course)
+    @name = name
+    @course = course
+  end
+end
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="クラスとインスタンス: インスタンスを使う" duration="0">
+        <pre><code language="language-ruby" class="language-ruby">kaikai = Instructor.new(&#34;かいかい&#34;, &#34;Webサービス&#34;)
+puts kaikai.name
+</code></pre>
+<pre><code language="language-sh" class="language-sh">かいかい
+</code></pre>
+<p>ちゃんりかの場合も同様にやってみましょう！</p>
+<p>メソッド</p>
+<pre><code language="language-ruby" class="language-ruby">class Instructor
+  ..
+  def answer(student)
+    puts &#34;#{student}の質問に答える&#34;
+  end
+end
+
+kaikai = Instructor.new(&#34;かいかい&#34;, &#34;Webサービス&#34;)
+kaikai.answer(&#34;がっしー&#34;)
+</code></pre>
+<pre><code language="language-sh" class="language-sh">がっしーの質問に答える
+</code></pre>
+<p>teach メソッドを作って、<code>Rubyについて教える</code>と<code>Sinatraについて教える</code>を返すメソッドをつくってみよう！</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Ruby の命名規則" duration="0">
+        <table>
+<tr><td colspan="1" rowspan="1"></td><td colspan="1" rowspan="1"><p>命名規則</p>
+</td><td colspan="1" rowspan="1"><p>例</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>クラス</p>
+</td><td colspan="2" rowspan="1"><p>UpperCamelCase</p>
+</td><td colspan="1" rowspan="1"></td></tr>
+<tr><td colspan="1" rowspan="1"><p>モジュール</p>
+</td><td colspan="2" rowspan="1"><p>UpperCamelCase</p>
+</td><td colspan="1" rowspan="1"></td></tr>
+<tr><td colspan="1" rowspan="1"><p>メソッド</p>
+</td><td colspan="2" rowspan="1"><p>snake_case</p>
+</td><td colspan="1" rowspan="1"></td></tr>
+<tr><td colspan="1" rowspan="1"><p>変数</p>
+</td><td colspan="2" rowspan="1"><p>snake_case</p>
+</td><td colspan="1" rowspan="1"></td></tr>
+<tr><td colspan="1" rowspan="1"><p>定数</p>
+</td><td colspan="2" rowspan="1"><p>SNAKE_WITH_UPPERCASE</p>
+</td><td colspan="1" rowspan="1"></td></tr>
+</table>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="まとめ" duration="0">
+        <p>Ruby は、究極のオブジェクト指向だ！ Ruby はすべてがオブジェクト</p>
+<p>例えば、文字列は String クラスのインスタンス</p>
+<pre><code language="language-ruby" class="language-ruby">instructor = &#39;chanrika&#39; # Stringクラスのインスタンス
+puts instructor.include?(&#39;a&#39;) # Stringクラスのメソッドが使える -&gt; 戻り値はTrueクラスのインスタンス
+puts instructor.to_i # Stringクラスのメソッドが使える -&gt; 戻り値はIntegerクラスのインスタンス
+</code></pre>
+<pre><code language="language-sh" class="language-sh">true
+0
+</code></pre>
+<pre><code language="language-ruby" class="language-ruby">animals = [&#34;dog&#34;, &#34;cat&#34;, &#34;mouse&#34;] # Arrayクラスのインスタンス
+animals.each do |animal| # Arrayクラスのメソッドが使える
+  puts animal # 戻り地はStringクラスのインスタンス
+end
+</code></pre>
+<pre><code language="language-sh" class="language-sh">dog
+cat
+mouse
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Challenge: じゃんけんアプリを作ろう" duration="0">
+        
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Challenge: あっち向いてホイアプリを作ろう" duration="0">
+        
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/codelab-elements/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
+  <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

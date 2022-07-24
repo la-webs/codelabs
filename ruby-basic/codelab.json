@@ -1,0 +1,23 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2022-07-24T00:39:21+09:00",
+  "id": "ruby-basic",
+  "duration": 0,
+  "title": "Ruby 基礎",
+  "summary": "Ruby 基礎",
+  "source": "ruby_basic.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "ruby"
+  ],
+  "tags": [
+    "web"
+  ],
+  "url": "ruby-basic"
+}
