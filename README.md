@@ -2,4 +2,4 @@
 
 ## Ruby基礎
 
-[https://la-webs.github.io/codelabs/ruby-basic](https://la-webs.github.io/codelabs/ruby-basic)
+[https://lit-webs.github.io/codelabs/ruby-basic/#0](https://lit-webs.github.io/codelabs/ruby-basic/#0)
