@@ -32,6 +32,7 @@
 <p>Cloud9 で実際にコードを入力して手を動かしながら、進めていきましょう！</p>
 <h2 is-upgraded>実行環境を整える</h2>
 <p>まずは、Cloud9 を開き、<code>enviroment</code>のフォルダの直下に、<code>sample.rb</code>という名前のファイルを作成しましょう。</p>
+<p>ファイルは、左側のフォルダを右クリックして出てくる New File をクリックするか、左上の<code>file</code>をクリックして出てくる New File をクリックすると作成できます。</p>
 <p>下の写真のようになっていれば OK です。</p>
 <p class="image-container"><img alt="Cloud9が表示されているか" src="img/aac3acc0edb6c8d0.png"></p>
 <h2 is-upgraded>コメント</h2>
@@ -56,7 +57,7 @@
 </code></pre>
 <h2 is-upgraded>標準出力</h2>
 <p>標準出力は、コンソールに情報を表示することができます。</p>
-<p>文字列をコンソールに出力したい場合</p>
+<p>文字列（変数を使わない場合）をコンソールに出力したい場合</p>
 <pre><code language="language-ruby" class="language-ruby">puts &#34;hoge&#34;
 </code></pre>
 <pre><code language="language-sh" class="language-sh">hoge
@@ -68,7 +69,7 @@ puts hoge
 <pre><code language="language-sh" class="language-sh">hello
 </code></pre>
 <h2 is-upgraded>チャレンジ</h2>
-<p>文字列の場合・変数を使う場合の 2 つのパターンで実際にコードを書いて出力させましょう</p>
+<p>変数を使う場合と使わない場合の 2 つのパターンで実際にコードを書いて出力させましょう。</p>
 <pre><code language="language-sh" class="language-sh">Cloud9を使って開発するよ
 </code></pre>
 
@@ -87,6 +88,12 @@ puts instructor
 <p>下のように出力されるか確認してみましょう。</p>
 <pre><code language="language-sh" class="language-sh">kaikai
 </code></pre>
+<h2 is-upgraded>Tips 動的型付けと静的型付け</h2>
+<p>Ruby は動的型付け言語なので型宣言は不要だと説明しました。動的型付け言語に対して、静的型付け言語も存在します。</p>
+<p>iOSアプリ開発でよく用いられる Swift の言語は静的型付け言語です。Swift では変数の定義を次のように行います。</p>
+<pre><code language="language-swift" class="language-swift">var instructor : String = &#34;kaikai&#34;
+</code></pre>
+<p>このように、静的型付け言語では変数の定義ごとに型を指定する必要があります。</p>
 
 
       </google-codelab-step>
@@ -213,6 +220,7 @@ puts animals
       <google-codelab-step label="型: ハッシュを知る" duration="0">
         <p>ここでは、ハッシュについて学んでいきます。</p>
 <p>ハッシュは、任意の種類のオブジェクト（キー）から任意の種類のオブジェクト（値）への関連付けを行うことができます。</p>
+<p>キーには<code>:文字列</code>の形をした シンボル と呼ばれるものを用いるのが一般的です。</p>
 <p>ハッシュは以下の方法で書くことができます。</p>
 <pre><code language="language-ruby" class="language-ruby">{ キー =&gt; 値 }
 { キー: 値 }
@@ -224,7 +232,7 @@ puts animals
 <pre><code language="language-ruby" class="language-ruby">{ green: &#34;緑&#34;, red: &#34;赤&#34; }
 </code></pre>
 <h2 is-upgraded>値の取り出し</h2>
-<p><code>ハッシュ名[:キー]</code>で取り出すことができます。</p>
+<p>キーがシンボルであるとき、<code>ハッシュ名[:キー]</code>で取り出すことができます。</p>
 <pre><code language="language-ruby" class="language-ruby">colors = { green: &#34;緑&#34;, red: &#34;赤&#34; }
 puts colors[:green]
 </code></pre>
@@ -295,7 +303,7 @@ puts number.to_s + text # TypeErrorを回避
 10.to_s
 </code></pre>
 <h2 is-upgraded>チャレンジ</h2>
-<p>それでは、以下のコードを実際して TypeError を発生してあげましょう。</p>
+<p>それでは、以下のコードを実行して TypeError を発生させてみましょう。</p>
 <pre><code language="language-ruby" class="language-ruby">number1 = 10
 number2 = 3.14
 text1 = &#34;20&#34;
@@ -305,7 +313,7 @@ puts number1 + text1
 puts number1 + text2
 puts number2 + text1
 </code></pre>
-<p>続いて、以下の出力になるように自分でプログラムを変えてみましょう。</p>
+<p>続いて、上で定義した変数を用いて、以下の出力になるように自分でプログラムを変えてみましょう。</p>
 <pre><code language="language-sh" class="language-sh">30
 10Hello World
 23.14
@@ -381,6 +389,10 @@ end
 <p>for・each・while のそれぞれを使って、配列の中身を順番に取り出すプログラムを書いてみましょう！</p>
 <pre><code language="language-ruby" class="language-ruby"># 配列のサンプル
 animals = [&#34;dog&#34;, &#34;cat&#34;, &#34;mouse&#34;]
+</code></pre>
+<p>また、「 1 から 100 までの整数の和」を繰り返し処理を用いて求めてみましょう。</p>
+<p>次のような結果が出力されたら正解です。</p>
+<pre><code language="language-sh" class="language-sh">5050
 </code></pre>
 
 
@@ -468,6 +480,8 @@ end
   end
 end
 </code></pre>
+<p>ここで、<code>@name</code>は生成されたインスタンスに定義される<code>インスタンス変数</code>と呼ばれるものです。</p>
+<p><code>インスタンス変数</code>の定義には、変数名の最初に<code>@</code>を付けます。</p>
 <h2 is-upgraded>インスタンスの生成</h2>
 <p>インスタンスを生成するときは、<code>クラス名.new()</code>で<code>initializeメソッド</code>を呼び出します。この時に、引数に定義した name と tool をインスタンスに定義することができます。</p>
 <p>例えば、name に<code>Webサービスプログラミングコース</code>・tool に<code>Cloud9</code>を定義したい時は以下のように記述します。</p>
@@ -585,6 +599,25 @@ mouse
     
       <google-codelab-step label="Challenge: あっち向いてホイアプリを作ろう" duration="0">
         
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="発展: オブジェクト指向" duration="0">
+        <p>発展として、13課で扱った<code>オブジェクト指向</code>について詳しく掘り下げます。</p>
+<p><code>オブジェクト指向(OOP)</code>とは、あらゆる対象をオブジェクトとして扱い、そのオブジェクト間の相互作用として全体を構成させる、プログラミング手法の一つです。</p>
+<p>13課で学んだように、<code>Ruby</code>には<code>クラス</code>と<code>インスタンス</code>があり、そこには<code>変数</code>と<code>メソッド</code>が定義されます。</p>
+<p>ここでは、クラスとインスタンスには一見関係なさそうな、変数に文字列を代入する例を見てみましょう。</p>
+<pre><code language="language-ruby" class="language-ruby">text = &#34;hoge&#34;
+puts text.class
+</code></pre>
+<pre><code language="language-sh" class="language-sh">String
+</code></pre>
+<p><code>.class</code>とは、インスタンスのクラスを返す<code>メソッド</code>を表します。</p>
+<p>結果は<code>String</code>と出たように、変数<code>text</code>は<code>Stringクラス</code>に属する<code>インスタンス</code>であることがわかります。</p>
+<p>したがって、<code>Stringクラス</code>では<code>メソッド</code>である<code>.class</code>が使えることがわかります。</p>
+<p>このように、<code>Ruby</code>を始めとする<code>オブジェクト指向型言語</code>では、あらゆる対象を<code>メソッド</code>と<code>定義</code>が用意されたモノ、すなわち<code>オブジェクト</code>として扱い、その組み合わせによってプログラムを構成する手法を取ります。</p>
+<p>※ 実際には、<code>.classメソッド</code>は<code>Objectクラス</code>に定義されており、Stringクラス は Objectクラス を<code>継承</code>しています。</p>
+
 
       </google-codelab-step>
     
