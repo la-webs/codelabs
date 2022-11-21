@@ -36,7 +36,7 @@
 <p>下の写真のようになっていれば OK です。</p>
 <p class="image-container"><img alt="Cloud9が表示されているか" src="img/aac3acc0edb6c8d0.png"></p>
 <h2 is-upgraded>コメント</h2>
-<p>このCodelabを見ていくと、このようなコードがあります。</p>
+<p>この Codelab を見ていくと、このようなコードがあります。</p>
 <pre><code language="language-ruby" class="language-ruby"># これは、コメントです。メモなど好きなことを書くことができます。
 </code></pre>
 <p>コメントは人間がわかりやすいように複雑な処理や一見わかりにくい処理に対して書くメモ書きです。 <code>#</code> シャープを書くことで右側はすべてコメントになります。</p>
@@ -90,7 +90,7 @@ puts instructor
 </code></pre>
 <h2 is-upgraded>Tips 動的型付けと静的型付け</h2>
 <p>Ruby は動的型付け言語なので型宣言は不要だと説明しました。動的型付け言語に対して、静的型付け言語も存在します。</p>
-<p>iOSアプリ開発でよく用いられる Swift の言語は静的型付け言語です。Swift では変数の定義を次のように行います。</p>
+<p>iOS アプリ開発でよく用いられる Swift の言語は静的型付け言語です。Swift では変数の定義を次のように行います。</p>
 <pre><code language="language-swift" class="language-swift">var instructor : String = &#34;kaikai&#34;
 </code></pre>
 <p>このように、静的型付け言語では変数の定義ごとに型を指定する必要があります。</p>
@@ -595,31 +595,52 @@ mouse
       <google-codelab-step label="Challenge: じゃんけんアプリを作ろう" duration="0">
         <p>標準入力と標準出力を使用して、じゃんけんアプリをつくりましょう。</p>
 <h2 is-upgraded>仕様</h2>
-<p>グー・チョキ・パーで、じゃんけんゲームをつくりましょう。ルールは、標準的なルールです。</p>
-<ul>
-<li><strong>ユーザーからの入力</strong><ul>
-<li>ユーザーの手</li>
+<h3 is-upgraded>出せる手</h3>
+<table>
+<tr><td colspan="1" rowspan="1"><p>出せる手</p>
+</td><td colspan="1" rowspan="1"><p>入力・出力上での表現</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>グー</p>
+</td><td colspan="1" rowspan="1"><p>0</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>チョキ</p>
+</td><td colspan="1" rowspan="1"><p>1</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>パー</p>
+</td><td colspan="1" rowspan="1"><p>2</p>
+</td></tr>
+</table>
+<h3 is-upgraded>流れ</h3>
+<ol type="1">
+<li>プレイヤーがじゃんけんの手を選び、標準入力で入力する。（0~2の整数）</li>
+<li>プレイヤーの手をコンピューターが受け取ったら、ランダムに手を選ぶ。</li>
+<li>プレイヤーとコンピューターで勝負する</li>
+<li>勝負結果・プレイヤーの手・コンピューターの手を、標準出力で表示する。 <ul>
+<li>勝負結果（0がプレイヤーの勝ち、1がプレイヤーの負け、2があいこ）・プレイヤーの手（0~2の整数）・コンピューターの手（0~2の整数）をそれぞれ半角スペースを空けて出力する。</li>
 </ul>
 </li>
-<li><strong>出力</strong><ul>
-<li>勝敗</li>
-<li>コンピューター側の手</li>
-</ul>
-</li>
-</ul>
-<p>以下は、標準入力と標準出力の一例です。この通りでなくても大丈夫です。</p>
-<pre><code language="language-sh" class="language-sh">ユーザーが入力: グー
-応答: 勝ち（コンピューターは、チョキでした）
+</ol>
+<h3 is-upgraded>入力と出力の例</h3>
+<p>例1: プレイヤーが<strong>グー</strong>を選び、コンピューターがランダムで<strong>チョキ</strong>を選んだことで、プレイヤーが<strong>勝った</strong>場合</p>
+<pre><code language="language-sh" class="language-sh">## 入力
+0
 
-ユーザーが入力: チョキ
-応答: 負け（コンピューターは、グーでした）
+## 出力
+0 0 1
+</code></pre>
+<p>例2: プレイヤーが<strong>チョキ</strong>を選び、コンピューターがランダムで<strong>グー</strong>を選んだことで、プレイヤーが<strong>負けた</strong>場合</p>
+<pre><code language="language-sh" class="language-sh">## 入力
+1
+
+## 出力
+1 1 0
 </code></pre>
 
 
       </google-codelab-step>
     
       <google-codelab-step label="Challenge: あっち向いてホイアプリを作ろう" duration="0">
-        <p>前のChallengeで作ったじゃんけんアプリを改良して、あっち向いてホイアプリをつくりましょう。</p>
+        <p>前の Challenge で作ったじゃんけんアプリを改良して、あっち向いてホイアプリをつくりましょう。</p>
 <h2 is-upgraded>仕様</h2>
 <p>じゃんけん部分は、上の「Challenge: じゃんけんアプリを作ろう」の章を見てください。</p>
 <p>あっち向いてホイは、以下の入力と出力を行います。</p>
@@ -638,12 +659,12 @@ mouse
 </li>
 <li>あっち向いてホイ<ul>
 <li><strong>ユーザーからの入力</strong><ul>
-<li>どの方向を向くのか or 当てるのか（↑↓←→の4方向）</li>
+<li>どの方向を向くのか or 当てるのか（↑↓←→ の 4 方向）</li>
 </ul>
 </li>
 <li><strong>出力</strong><ul>
 <li>勝敗</li>
-<li>どの方向を向いたか or 当てるのか（↑↓←→の4方向）</li>
+<li>どの方向を向いたか or 当てるのか（↑↓←→ の 4 方向）</li>
 </ul>
 </li>
 </ul>
@@ -654,9 +675,9 @@ mouse
       </google-codelab-step>
     
       <google-codelab-step label="発展: オブジェクト指向" duration="0">
-        <p>発展として、13課で扱った<code>オブジェクト指向</code>について詳しく掘り下げます。</p>
+        <p>発展として、13 課で扱った<code>オブジェクト指向</code>について詳しく掘り下げます。</p>
 <p><code>オブジェクト指向(OOP)</code>とは、あらゆる対象をオブジェクトとして扱い、そのオブジェクト間の相互作用として全体を構成させる、プログラミング手法の一つです。</p>
-<p>13課で学んだように、<code>Ruby</code>には<code>クラス</code>と<code>インスタンス</code>があり、そこには<code>変数</code>と<code>メソッド</code>が定義されます。</p>
+<p>13 課で学んだように、<code>Ruby</code>には<code>クラス</code>と<code>インスタンス</code>があり、そこには<code>変数</code>と<code>メソッド</code>が定義されます。</p>
 <p>ここでは、クラスとインスタンスには一見関係なさそうな、変数に文字列を代入する例を見てみましょう。</p>
 <pre><code language="language-ruby" class="language-ruby">text = &#34;hoge&#34;
 puts text.class
@@ -667,7 +688,7 @@ puts text.class
 <p>結果は<code>String</code>と出たように、変数<code>text</code>は<code>Stringクラス</code>に属する<code>インスタンス</code>であることがわかります。</p>
 <p>したがって、<code>Stringクラス</code>では<code>メソッド</code>である<code>.class</code>が使えることがわかります。</p>
 <p>このように、<code>Ruby</code>を始めとする<code>オブジェクト指向型言語</code>では、あらゆる対象を<code>メソッド</code>と<code>定義</code>が用意されたモノ、すなわち<code>オブジェクト</code>として扱い、その組み合わせによってプログラムを構成する手法を取ります。</p>
-<p>※ 実際には、<code>.classメソッド</code>は<code>Objectクラス</code>に定義されており、Stringクラス は Objectクラス を<code>継承</code>しています。</p>
+<p>※ 実際には、<code>.classメソッド</code>は<code>Objectクラス</code>に定義されており、String クラス は Object クラス を<code>継承</code>しています。</p>
 
 
       </google-codelab-step>
