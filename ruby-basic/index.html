@@ -640,36 +640,70 @@ mouse
       </google-codelab-step>
     
       <google-codelab-step label="Challenge: あっち向いてホイアプリを作ろう" duration="0">
-        <p>前の Challenge で作ったじゃんけんアプリを改良して、あっち向いてホイアプリをつくりましょう。</p>
+        <p>標準入力と標準出力を使用して、あっち向いてホイアプリをつくりましょう。</p>
 <h2 is-upgraded>仕様</h2>
-<p>じゃんけん部分は、上の「Challenge: じゃんけんアプリを作ろう」の章を見てください。</p>
-<p>あっち向いてホイは、以下の入力と出力を行います。</p>
+<h3 is-upgraded>出せる手</h3>
+<table>
+<tr><td colspan="1" rowspan="1"><p>出せる手</p>
+</td><td colspan="1" rowspan="1"><p>入力・出力上での表現</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>グー</p>
+</td><td colspan="1" rowspan="1"><p>0</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>チョキ</p>
+</td><td colspan="1" rowspan="1"><p>1</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>パー</p>
+</td><td colspan="1" rowspan="1"><p>2</p>
+</td></tr>
+</table>
+<h3 is-upgraded>指・顔の向き</h3>
+<table>
+<tr><td colspan="1" rowspan="1"><p>指・顔の向き</p>
+</td><td colspan="1" rowspan="1"><p>入力・出力上での表現</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>上</p>
+</td><td colspan="1" rowspan="1"><p>0</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>右</p>
+</td><td colspan="1" rowspan="1"><p>1</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>左</p>
+</td><td colspan="1" rowspan="1"><p>2</p>
+</td></tr>
+<tr><td colspan="1" rowspan="1"><p>下</p>
+</td><td colspan="1" rowspan="1"><p>3</p>
+</td></tr>
+</table>
+<h3 is-upgraded>流れ</h3>
 <ol type="1">
-<li>じゃんけん（「Challenge: じゃんけんアプリを作ろう」と同じです）<ul>
-<li><strong>ユーザーからの入力</strong><ul>
-<li>ユーザーの手</li>
-</ul>
-</li>
-<li><strong>出力</strong><ul>
-<li>勝敗</li>
-<li>コンピューター側の手</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>あっち向いてホイ<ul>
-<li><strong>ユーザーからの入力</strong><ul>
-<li>どの方向を向くのか or 当てるのか（↑↓←→ の 4 方向）</li>
-</ul>
-</li>
-<li><strong>出力</strong><ul>
-<li>勝敗</li>
-<li>どの方向を向いたか or 当てるのか（↑↓←→ の 4 方向）</li>
-</ul>
-</li>
+<li>プレイヤーがじゃんけんの手を選び、標準入力で入力する。（0~2の整数）</li>
+<li>プレイヤーの手をコンピューターが受け取ったら、ランダムに手を選ぶ。</li>
+<li>プレイヤーとコンピューターで勝負する(あいこの場合、1に戻る)</li>
+<li>プレイヤーが勝った場合、指の向きを標準入力で入力する。（0~3の整数） / プレイヤーが負けた場合、顔の向きを標準入力で入力する。（0~3の整数）</li>
+<li>プレイヤーの指 or 顔の向きを受け取ったら、コンピューターはランダムに指 or 顔の向きを選ぶ。</li>
+<li>プレイヤーの指 or 顔の向きとコンピューターの指 or 顔の向きで勝負を行う。</li>
+<li>勝負結果・プレイヤーの手・コンピューターの手・プレイヤーの指 or 顔の向き・コンピューターの指 or 顔の向きを、標準出力で表示する。 <ul>
+<li>勝負結果（0がプレイヤーの勝ち、1がプレイヤーの負け）・プレイヤーの手（0~2の整数）・コンピューターの手（0~2の整数）・プレイヤーの指 or 顔の向き（0~3の整数）・コンピューターの指 or 顔の向き（0~3の整数）をそれぞれ半角スペースを空けて出力する。</li>
 </ul>
 </li>
 </ol>
+<h3 is-upgraded>入力と出力の例</h3>
+<p>例1: あいこ無しで、プレイヤーがじゃんけん（プレイヤー：グー / コンピューター: チョキ）で勝利し、あっち向いてホイでも勝利（プレイヤー: 上 / コンピューター: 上）した場合</p>
+<pre><code language="language-sh" class="language-sh">## 入力
+0
+
+## 出力
+0 0 1 0 0
+</code></pre>
+<p>例2: あいこ有りで、プレイヤーがじゃんけん（プレイヤー：グー / コンピューター: チョキ）で勝利し、あっち向いてホイで敗北（プレイヤー: 下 / コンピューター: 上）した場合</p>
+<pre><code language="language-sh" class="language-sh">## 入力
+1
+0
+
+## 出力
+1 0 1 3 0
+</code></pre>
 
 
       </google-codelab-step>
