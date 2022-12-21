@@ -4,7 +4,7 @@ id: ruby-basic
 categories: ruby
 environments: Web
 status: Published
-feedback link: <https://github.com/la-webs/codelabs>
+feedback link: <https://github.com/lit-webs/codelabs/issues/new>
 
 # Ruby 基礎
 
